@@ -29,7 +29,11 @@ def generate_dataset(path_source, path_dest, rho, height, width, data, box):
     images = np.empty([box, box, 2], dtype=np.uint8)
     offsets = np.empty([8], dtype=np.int8)
     k = 0
+    step_size = 1000
+    print('Generating dataset')
     for i in range(0, data):
+        if i%step_size == 0:
+            print(i)
         img = load_random_image(path_source, [width, height]).astype(np.uint16)
         src = np.empty([4, 2], dtype=np.uint8)
         dst = np.zeros([4, 2])
@@ -93,11 +97,13 @@ train_box_size = 128
 train_height = 240
 train_width = 320
 train_rho = 32
+print('generating training data')
 generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
 
 # Generate dataset for validation
 val_data_path = 'val2014/'  # path to validation dataset
 val_size = 50000
+print('Generating val-data')
 generate_dataset(val_data_path, 'val-data', train_rho, train_height, train_width, val_size, train_box_size)
 
 # Generate dataset for testing
@@ -107,6 +113,7 @@ test_box_size = 256
 test_height = 480
 test_width = 640
 test_rho = 64
+print('Generating test-data')
 generate_dataset(test_data_path, 'test-data', test_rho, test_height, test_width, test_size, test_box_size)
 
 # Show sample image
