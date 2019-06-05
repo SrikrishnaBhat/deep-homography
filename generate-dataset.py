@@ -6,6 +6,7 @@ import os.path
 import random as rd
 import cv2
 import matplotlib.pyplot as plt
+from time import time
 
 
 # Load a random image from the dataset
@@ -28,12 +29,14 @@ def save_to_file(images, offsets, path_dest):
 def generate_dataset(path_source, path_dest, rho, height, width, data, box):
     images = np.empty([box, box, 2], dtype=np.uint8)
     offsets = np.empty([8], dtype=np.int8)
+    start_time = time()
     k = 0
     step_size = 1000
     print('Generating dataset')
     for i in range(0, data):
         if i%step_size == 0:
-            print(i)
+            print(i, time() - start_time)
+            start_time = time()
         img = load_random_image(path_source, [width, height]).astype(np.uint16)
         src = np.empty([4, 2], dtype=np.uint8)
         dst = np.zeros([4, 2])
