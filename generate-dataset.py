@@ -93,12 +93,12 @@ train_box_size = 128
 train_height = 240
 train_width = 320
 train_rho = 32
-# generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
+generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
 
 # Generate dataset for validation
 val_data_path = 'val2014/'  # path to validation dataset
 val_size = 50000
-# generate_dataset(val_data_path, 'val-data', train_rho, train_height, train_width, val_size, train_box_size)
+generate_dataset(val_data_path, 'val-data', train_rho, train_height, train_width, val_size, train_box_size)
 
 # Generate dataset for testing
 test_data_path = 'test2014/'  # path to testing dataset
@@ -107,7 +107,7 @@ test_box_size = 256
 test_height = 480
 test_width = 640
 test_rho = 64
-# generate_dataset(test_data_path, 'test-data', test_rho, test_height, test_width, test_size, test_box_size)
+generate_dataset(test_data_path, 'test-data', test_rho, test_height, test_width, test_size, test_box_size)
 
 # Show sample image
 # archive = np.load('train-data/tmp__0n7fza.npz')
@@ -121,5 +121,5 @@ test_rho = 64
 
 
 # Group datasets into batch_sizes (default is 64)
-# group_dataset('train-data', 'train-data-combined')
-# group_dataset('val-data', 'val-data-combined')
+group_dataset('train-data', 'train-data-combined')
+group_dataset('val-data', 'val-data-combined')
