@@ -19,7 +19,7 @@ def load_random_image(path_source, size):
 def save_to_file(images, offsets, path_dest):
     if not os.path.exists(path_dest):
         os.makedirs(path_dest)
-    outfile = TemporaryFile(dir=path_dest, delete=False, suffix='.npz')
+    outfile = TemporaryFile(dir=path_dest, suffix='.npz')
     np.savez(outfile, images=images, offsets=offsets)
     outfile.close()
 
