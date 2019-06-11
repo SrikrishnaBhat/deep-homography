@@ -7,10 +7,6 @@ import random as rd
 import cv2
 import matplotlib.pyplot as plt
 from time import time
-<<<<<<< HEAD
-=======
-
->>>>>>> 6490e75a9e2f04406e09dd80ea460292992232f0
 
 # Load a random image from the dataset
 def load_random_image(path_source, size):
@@ -39,12 +35,8 @@ def generate_dataset(path_source, path_dest, rho, height, width, data, box):
     start_time = time()
     for i in range(0, data):
         if i%step_size == 0:
-<<<<<<< HEAD
             print('Generated {} in {} seconds'.format(i, time() - start_time))
-=======
-            print(i, time() - start_time)
             start_time = time()
->>>>>>> 6490e75a9e2f04406e09dd80ea460292992232f0
         img = load_random_image(path_source, [width, height]).astype(np.uint16)
         src = np.empty([4, 2], dtype=np.uint8)
         dst = np.zeros([4, 2])
@@ -110,13 +102,13 @@ def group_dataset (path, new_path, box=128, size=64):
 
 # Generate dataset for training
 train_data_path = 'train2014/'  # path to training dataset
-train_size = 100000
+train_size = 400000
 train_box_size = 128
 train_height = 240
 train_width = 320
 train_rho = 32
-# print('generating training data')
-# generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
+print('generating training data')
+generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
 
 # Generate dataset for validation
 val_data_path = 'val2014/'  # path to validation dataset
@@ -146,5 +138,5 @@ val_size = 50000
 
 
 # Group datasets into batch_sizes (default is 64)
-group_dataset('train-data-small', 'train-data-combined')
-group_dataset('val-data-small', 'val-data-combined')
+# group_dataset('train-data-small', 'train-data-combined')
+# group_dataset('val-data-small', 'val-data-combined')
