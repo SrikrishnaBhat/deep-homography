@@ -153,7 +153,7 @@ print("Starting Training of Regression Network...")
 regression_network(train_data_path, val_data_path, total_iterations, batch_size, itr, steps_per_epoch, val_steps)
 
 print("Starting Training of Classification Network...")
-classification_network(test_data_path, val_data_path, total_iterations, batch_size, itr, steps_per_epoch, val_steps)
+classification_network(train_data_path, val_data_path, total_iterations, batch_size, itr, steps_per_epoch, val_steps)
 
 # print("Testing the Regression Network...")
 # test_model(model_save_path='models/regression.h5', test_data_path='test-data/')
