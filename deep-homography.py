@@ -138,13 +138,13 @@ train_data_path = 'train-data-combined/'
 val_data_path = 'val-data-combined/'
 test_data_path = 'test-data/'
 
-total_iterations = 90000
+total_iterations = 30000
 batch_size = 64
 
-train_samples = 500000
+train_samples = 100000
 steps_per_epoch = int(train_samples / batch_size)
 
-val_samples = 50000
+val_samples = 10000
 val_steps = int(val_samples / batch_size)
 
 itr = 30000
