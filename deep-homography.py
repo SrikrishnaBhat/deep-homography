@@ -149,8 +149,8 @@ val_steps = int(val_samples / batch_size)
 
 itr = 30000
 
-print("Starting Training of Regression Network...")
-regression_network(train_data_path, val_data_path, total_iterations, batch_size, itr, steps_per_epoch, val_steps)
+# print("Starting Training of Regression Network...")
+# regression_network(train_data_path, val_data_path, total_iterations, batch_size, itr, steps_per_epoch, val_steps)
 
 print("Starting Training of Classification Network...")
 classification_network(train_data_path, val_data_path, total_iterations, batch_size, itr, steps_per_epoch, val_steps)
