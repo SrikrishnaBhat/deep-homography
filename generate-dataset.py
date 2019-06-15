@@ -106,8 +106,8 @@ train_box_size = 128
 train_height = 240
 train_width = 320
 train_rho = 32
-# print('generating training data')
-# generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
+print('generating training data')
+generate_dataset(train_data_path, 'train-data', train_rho, train_height, train_width, train_size, train_box_size)
 
 # Generate dataset for validation
 val_data_path = 'val2014/'  # path to validation dataset
