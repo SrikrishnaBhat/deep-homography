@@ -8,6 +8,7 @@ import numpy as np
 import os.path
 import matplotlib.pyplot as plt
 import cv2
+import sys
 
 
 ## Test the model
@@ -39,11 +40,26 @@ def test_model(model_save_path, test_data_path, test_size=2, batch_size=64):
             i = 0
     print('Mean Average Corner Error: ', np.average(error))
 
-regression_file = 'models/regression.h5'
-classification_file = 'models/classification.h5'
+### Usage:
+### python test-deep-homography.py <model_file> <test_directory containing .npz file>
 
-print("Testing the Regression Network...")
-test_model(model_save_path='models/regression.h5', test_data_path='test-data/')
+if len(sys.argv) < 1:
+    model_file = 'models/regression.h5'
+else:
+    model_file = sys.argv[0]
 
-print("Testing the Classification Network...")
-test_model(model_save_path='models/classification.h5', test_data_path='test-data/')
+if len(sys.argv) < 2:
+    test_file = 'test-data'
+else:
+    test_file = sys.argv[1]
+
+# regression_file = 'models/regression.h5'
+# classification_file = 'models/classification.h5'
+
+print("Testing the model stored in {}...".format(model_file))
+
+test_model(model_save_path=model_file, test_data_path=test_file)
+# test_model(model_save_path='models/regression.h5', test_data_path='test-data/')
+
+# print("Testing the Classification Network...")
+# test_model(model_save_path='models/classification.h5', test_data_path='test-data/')
