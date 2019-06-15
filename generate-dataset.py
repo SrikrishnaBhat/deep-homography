@@ -7,10 +7,6 @@ import random as rd
 import cv2
 import matplotlib.pyplot as plt
 from time import time
-<<<<<<< HEAD
-=======
-
->>>>>>> 6490e75a9e2f04406e09dd80ea460292992232f0
 
 # Load a random image from the dataset
 def load_random_image(path_source, size):
@@ -39,12 +35,7 @@ def generate_dataset(path_source, path_dest, rho, height, width, data, box):
     start_time = time()
     for i in range(0, data):
         if i%step_size == 0:
-<<<<<<< HEAD
             print('Generated {} in {} seconds'.format(i, time() - start_time))
-=======
-            print(i, time() - start_time)
-            start_time = time()
->>>>>>> 6490e75a9e2f04406e09dd80ea460292992232f0
         img = load_random_image(path_source, [width, height]).astype(np.uint16)
         src = np.empty([4, 2], dtype=np.uint8)
         dst = np.zeros([4, 2])
@@ -146,5 +137,5 @@ val_size = 50000
 
 
 # Group datasets into batch_sizes (default is 64)
-group_dataset('train-data-small', 'train-data-combined')
-group_dataset('val-data-small', 'val-data-combined')
+#group_dataset('train-data-small', 'train-data-combined')
+group_dataset('val-data', 'val-data-combined-full')

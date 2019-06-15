@@ -134,8 +134,8 @@ def test_model(model_save_path, test_data_path, test_size=2, batch_size=64):
     print('Mean Average Corner Error: ', np.average(error))
 
 
-train_data_path = 'train-data-combined/'
-val_data_path = 'val-data-combined/'
+train_data_path = 'train-data-combined-full/'
+val_data_path = 'val-data-combined-full/'
 test_data_path = 'test-data/'
 
 total_iterations = 90000
