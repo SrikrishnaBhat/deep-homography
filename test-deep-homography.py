@@ -39,6 +39,7 @@ def test_model(model_save_path, test_data_path, test_size=2, batch_size=64):
             j = j + 1
             i = 0
     print('Mean Average Corner Error: ', np.average(error))
+    return np.average(error)
 
 ### Usage:
 ### python test-deep-homography.py <model_file> <test_directory containing .npz file>
@@ -57,8 +58,9 @@ else:
 # classification_file = 'models/classification.h5'
 
 print("Testing the model stored in {}...".format(model_file))
-
-test_model(model_save_path=model_file, test_data_path=test_file)
+mace = test_model(model_save_path=model_file, test_data_path=test_file)
+file_name = os.path.splitext(os.path.split(test_file)[-1])[0] + '.npy'
+np.save(file_name, np.array(mace))
 # test_model(model_save_path='models/regression.h5', test_data_path='test-data/')
 
 # print("Testing the Classification Network...")
