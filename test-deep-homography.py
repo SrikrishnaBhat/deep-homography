@@ -55,7 +55,7 @@ else:
 
 print("Testing the model stored in {}...".format(model_file))
 mace = test_model(model_save_path=model_file, test_data_path=test_file)
-file_name = os.path.splitext(os.path.split(test_file)[-1])[0] + '.npy'
+file_name = os.path.splitext(os.path.split(model_file)[-1])[0] + '.npy'
 np.save(file_name, np.array(mace))
 # test_model(model_save_path='models/regression.h5', test_data_path='test-data/')
 
