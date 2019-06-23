@@ -12,7 +12,7 @@ import sys
 
 
 ## Test the model
-def test_model(model_save_path, test_data_path, test_size=2, batch_size=64):
+def test_model(model_save_path, test_data_path, test_size=5000, batch_size=64):
     i = 0
     j = 0
     error = np.empty(int(test_size/batch_size)+1)
@@ -23,13 +23,9 @@ def test_model(model_save_path, test_data_path, test_size=2, batch_size=64):
         archive = np.load(npz_test)
         images[i] = np.resize(archive['images'], (128, 128, 2)).astype(np.float64)/255
         offsets[i] = archive['offsets']
-        cv2.imwrite('image_{}_0.png'.format(i), images[i][:, :, 0]*255)
-        cv2.imwrite('image_{}_1.png'.format(i), images[i][:, :, 1]*255)
         i = i + 1
         if i % batch_size == 0:
             offsets_predicted = model_l.predict(images)*64
-            print(offsets_predicted.tolist())
-            print(offsets.tolist())
             x_1 = np.sqrt((offsets[:, 0] - offsets_predicted[:, 0]) ** 2 + (offsets[:, 1] - offsets_predicted[:, 1]) ** 2)
             x_2 = np.sqrt((offsets[:, 2] - offsets_predicted[:, 2]) ** 2 + (offsets[:, 3] - offsets_predicted[:, 3]) ** 2)
             x_3 = np.sqrt((offsets[:, 4] - offsets_predicted[:, 4]) ** 2 + (offsets[:, 5] - offsets_predicted[:, 5]) ** 2)
