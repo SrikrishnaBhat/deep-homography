@@ -43,15 +43,15 @@ def test_model(model_save_path, test_data_path, test_size=2, batch_size=64):
 ### Usage:
 ### python test-deep-homography.py <model_file> <test_directory containing .npz file>
 
-if len(sys.argv) < 1:
+if len(sys.argv) < 2:
     model_file = 'models/regression.h5'
 else:
-    model_file = sys.argv[0]
+    model_file = sys.argv[1]
 
-if len(sys.argv) < 2:
+if len(sys.argv) < 3:
     test_file = 'test-data'
 else:
-    test_file = sys.argv[1]
+    test_file = sys.argv[2]
 
 # regression_file = 'models/regression.h5'
 # classification_file = 'models/classification.h5'
